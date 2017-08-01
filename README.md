@@ -18,6 +18,13 @@ The actual installation is going to happen with [Homebrew](https://brew.sh), a m
 brew install bash
 ```
 
+After that, grab the value from the following command. This is where Homebrew installed your new Bash binary.
+
+```bash
+$ echo $(brew --prefix bash)/bin/bash
+/usr/local/opt/bash/bin/bash
+```
+
 ## Testing the Bash version
 
 Now we'll want to test our version of Bash. Imagine a file:
@@ -36,10 +43,10 @@ $ ./version-test.sh
 3.2.57(1)-release (x86_64-apple-darwin16)
 ```
 
-Seemingly it’s still using the old version of Bash. The trick is the _shebang_ on the first line, it’s pointing to the old Bash path. Change it to:
+Seemingly it’s still using the old version of Bash. The trick is the _shebang_ on the first line, it’s pointing to the old Bash path. Change it to use the new path that you saved, above.
 
 ```bash
-#! /usr/local/bin/bash
+#! /usr/local/opt/bash/bin/bash
 # version-test.sh
 echo $BASH_VERSION;
 ```
@@ -53,9 +60,11 @@ $ ./version-test.sh
 
 ## Configure the Default Shell in Terminal
 
+Again, use the new path that you saved above.
+
 ```bash
-sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
-chsh -s /usr/local/bin/bash 
+sudo bash -c 'echo /usr/local/opt/bash/bin/bash >> /etc/shells'
+chsh -s /usr/local/opt/bash/bin/bash
 ```
 
 Now quit Terminal, then re-launch it.
