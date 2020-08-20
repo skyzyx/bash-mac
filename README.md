@@ -1,4 +1,4 @@
-# Configuring Bash 4.x as the default shell for macOS
+# Configuring modern Bash as the default shell for macOS
 
 This guide uses [Upgrade to bash 4 in Mac OS X](http://clubmate.fi/upgrade-to-bash-4-in-mac-os-x/) as its base, then modifies its content over time, as appropriate. A huge thanks to [@hiljaa](https://twitter.com/hiljaa).
 
