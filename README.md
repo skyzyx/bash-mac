@@ -25,6 +25,9 @@ $ echo $(brew --prefix bash)/bin/bash
 /usr/local/opt/bash/bin/bash
 ```
 
+> [!NOTE]
+> The path above is correct for Intel-based Macs. If you have an Apple Silicon-based Mac, the path will be `/opt/homebrew/opt/bash/bin/bash`.
+
 ## Testing the Bash version
 
 Now we'll want to test our version of Bash. Imagine a file:
@@ -45,17 +48,29 @@ $ ./version-test.sh
 
 Seemingly it’s still using the old version of Bash. The trick is the _shebang_ on the first line, it’s pointing to the old Bash path. Change it to use the new path that you saved, above.
 
+### Intel Mac
+
 ```bash
 #! /usr/local/opt/bash/bin/bash
 # version-test.sh
 echo $BASH_VERSION;
 ```
 
-Now run it and it gives the 4 as a version.
+### Apple Silicon Mac
+
+```bash
+#! /opt/homebrew/opt/bash/bin/bash
+# version-test.sh
+echo $BASH_VERSION;
+```
+
+### Check the version
+
+Now run it and it gives a newer version.
 
 ```bash
 $ ./version-test.sh
-4.4.12(1)-release
+5.2.21(1)-release
 ```
 
 ## Configure the Default Shell in Terminal
@@ -63,8 +78,8 @@ $ ./version-test.sh
 Again, use the new path that you saved above.
 
 ```bash
-sudo bash -c 'echo /usr/local/opt/bash/bin/bash >> /etc/shells'
-chsh -s /usr/local/opt/bash/bin/bash
+sudo bash -c "echo $(brew --prefix bash)/bin/bash >> /etc/shells"
+chsh -s $(brew --prefix bash)/bin/bash
 ```
 
 Now quit Terminal, then re-launch it.
