@@ -95,3 +95,4 @@ If it still shows the old Bash, just go to the _Terminal_ menu → _Preferences_
 ## See Also…
 
 * https://superuser.com/questions/857250/how-to-update-bash-on-mac-os-x-yosemite
+* http://clubmate.fi/upgrade-to-bash-4-in-mac-os-x/
